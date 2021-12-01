@@ -1,4 +1,11 @@
-import React from "react";
-import ReactDOM from 'react-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import '@tensorflow/tfjs';
 
-ReactDOM.render(<h1>Mock</h1>, document.querySelector("#root"));
+import App from './App';
+
+ReactDOM.render(
+  // eslint-disable-next-line react/jsx-filename-extension
+  <App />,
+  document.querySelector('#root'),
+);
