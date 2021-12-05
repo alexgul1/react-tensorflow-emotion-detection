@@ -1,11 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 
-import styles from './PredictionRectangle.scss';
+import styles from './BoundingBoxes.scss';
 
-const PredictionRectangle = ({ predictions, width, height }) => {
+const BoundingBoxes = ({ predictions, width, height }) => {
   const canvasRef = useRef(null);
 
   const draw = () => {
+    const ctx = canvasRef.current.getContext('2d');
+
+    ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
     if (predictions?.length > 0 && canvasRef?.current) {
       predictions.forEach(({ topLeft, bottomRight }) => {
         const [firstStartPoint, secondStartPoint] = topLeft;
@@ -14,10 +17,6 @@ const PredictionRectangle = ({ predictions, width, height }) => {
           firstEndPoint - firstStartPoint,
           secondEndPoint - secondStartPoint,
         ];
-
-        const ctx = canvasRef.current.getContext('2d');
-
-        ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
 
         ctx.beginPath();
         ctx.lineWidth = '4';
@@ -39,7 +38,7 @@ const PredictionRectangle = ({ predictions, width, height }) => {
     }
   }, [width, height]);
 
-  return <canvas ref={canvasRef} className={styles.test} />;
+  return <canvas ref={canvasRef} className={styles.wrapper} />;
 };
 
-export default PredictionRectangle;
+export default BoundingBoxes;

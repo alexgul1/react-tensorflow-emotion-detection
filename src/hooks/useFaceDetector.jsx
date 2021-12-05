@@ -1,36 +1,33 @@
-import { useEffect, useState } from 'react';
-import * as blazeface from '@tensorflow-models/blazeface';
+import { useContext, useEffect, useState } from 'react';
+import { ModelContext } from '../contexts/modelStatus.context';
 
-import debounce from '../utils/debounce';
-
-const useFaceDetector = (webcamRef) => {
+const useFaceDetector = (photoRef, imageUrl) => {
   const returnTensors = false;
-  let model;
+
+  const { model, requestModel, isModelLoaded } = useContext(ModelContext);
 
   const [predictions, setPredictions] = useState(null);
 
   const detectFace = async () => {
-    if (model && webcamRef?.current?.video?.readyState === 4) {
-      // Get video
-      const { video } = webcamRef.current;
-
-      const prediction = await model.estimateFaces(video, returnTensors);
+    if (model && photoRef?.current) {
+      const prediction = await model.estimateFaces(
+        photoRef?.current,
+        returnTensors,
+      );
 
       setPredictions(prediction);
     }
   };
 
-  const requestModel = async () => {
-    model = await blazeface.load();
-
-    setInterval(() => {
-      debounce(detectFace(), 100);
-    }, 100);
-  };
+  useEffect(() => {
+    if (!isModelLoaded) {
+      requestModel();
+    }
+  }, []);
 
   useEffect(() => {
-    requestModel();
-  }, []);
+    detectFace();
+  }, [imageUrl]);
 
   return {
     predictions,

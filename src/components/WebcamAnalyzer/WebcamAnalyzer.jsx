@@ -1,15 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 import Webcam from 'react-webcam';
 
-import useFaceDetector from '../../hooks/useFaceDetector';
-import PredictionRectangle from '../PredictionRectangle/PredictionRectangle';
+import useRealTimeFaceDetector from '../../hooks/useRealTimeFaceDetector';
+import BoundingBoxes from '../BoundingBoxes/BoundingBoxes';
 
-import styles from './WebcamWrapper.scss';
+import styles from './WebcamAnalyzer.scss';
 
-const WebcamWrapper = () => {
+const WebcamAnalyzer = () => {
   const webcamRef = useRef(null);
 
-  const { predictions } = useFaceDetector(webcamRef);
+  const { predictions } = useRealTimeFaceDetector(webcamRef);
 
   useEffect(() => {
     if (webcamRef?.current?.video) {
@@ -21,14 +21,18 @@ const WebcamWrapper = () => {
 
   return (
     <div>
-      <Webcam audio={false} ref={webcamRef} className={styles.test} />
-      <PredictionRectangle
+      <Webcam
+        audio={false}
+        ref={webcamRef}
+        className={styles['webcam-wrapper']}
+      />
+      <BoundingBoxes
         predictions={predictions}
-        width={webcamRef?.current?.video?.width}
+        width={webcamRef?.current?.video?.videoWidth}
         height={webcamRef?.current?.video.videoHeight}
       />
     </div>
   );
 };
 
-export default WebcamWrapper;
+export default WebcamAnalyzer;
