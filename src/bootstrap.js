@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import '@tensorflow/tfjs';
-import 'antd/dist/antd.css';
+
+import 'normalize.css/normalize.css';
+
+import './assets/style/reset.scss';
 
 import App from './App';
 

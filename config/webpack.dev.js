@@ -1,5 +1,4 @@
 const { merge } = require('webpack-merge');
-const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const commonConfig = require('./webpack.common');
@@ -8,9 +7,7 @@ const devConfig = {
   mode: 'development',
   devServer: {
     port: 8080,
-    historyApiFallback: {
-      index: 'index.html',
-    },
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -39,7 +36,7 @@ const devConfig = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: './index.html',
     }),
   ],
 };

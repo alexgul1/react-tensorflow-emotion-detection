@@ -1,6 +1,20 @@
+const { resolve } = require('path');
+
 module.exports = {
+  context: resolve('src'),
+  entry: {
+    main: './index.js',
+  },
   resolve: {
     extensions: ['.js', '.jsx'],
+    modules: [
+      resolve(__dirname, '../src'),
+      resolve(__dirname, '../node_modules'),
+    ],
+  },
+  output: {
+    path: resolve('build'),
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -23,6 +37,14 @@ module.exports = {
           },
           {
             loader: 'css-loader',
+          },
+        ],
+      },
+      {
+        test: /\.(png|jp(e*)g|svg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
           },
         ],
       },

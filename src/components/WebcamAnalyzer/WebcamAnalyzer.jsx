@@ -3,6 +3,7 @@ import Webcam from 'react-webcam';
 
 import useRealTimeFaceDetector from '../../hooks/useRealTimeFaceDetector';
 import BoundingBoxes from '../BoundingBoxes/BoundingBoxes';
+import MainLayout from "../../layouts/MainLayout/MainLayout";
 
 import styles from './WebcamAnalyzer.scss';
 
@@ -20,7 +21,7 @@ const WebcamAnalyzer = () => {
   }, [webcamRef?.current?.video]);
 
   return (
-    <div>
+    <MainLayout>
       <Webcam
         audio={false}
         ref={webcamRef}
@@ -31,7 +32,7 @@ const WebcamAnalyzer = () => {
         width={webcamRef?.current?.video?.videoWidth}
         height={webcamRef?.current?.video.videoHeight}
       />
-    </div>
+    </MainLayout>
   );
 };
 

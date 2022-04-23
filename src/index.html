@@ -1,11 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emotion Detection</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emotion Detection</title>
+  <style id="pre-render--styles">
+      * {
+          margin: 0;
+          padding: 0;
+          -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+          outline: none;
+      }
+
+      #root {
+          display: none;
+      }
+
+      .wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: sans-serif;
+          margin: 0;
+          width: 100%;
+          height: 100vh;
+          background: #18191F;
+          z-index: 10;
+          color: #FFFFFF;
+          font-size: 24px;
+      }
+
+      .loader {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 25px;
+      }
+
+      #path1 {
+          animation: draw1 5s linear infinite;
+      }
+
+      #path2 {
+          animation: draw2 5s linear infinite;
+      }
+
+      #path3 {
+          animation: draw3 5s linear infinite;
+      }
+
+      #path4 {
+          animation: draw4 5s linear infinite;
+      }
+
+
+      @keyframes draw1 {
+          0%, 100% {
+              fill:#fff;
+              fill-opacity: 0.4;
+          }
+          50% {
+              fill:#f22bb2;
+              fill-opacity: 1;
+          }
+      }
+
+      @keyframes draw2 {
+          0%, 100% {
+              fill:#fff;
+              fill-opacity: 0.4;
+          }
+          50% {
+              fill:#8C30F5;
+              fill-opacity: 1;
+          }
+      }
+
+      @keyframes draw3 {
+      0%, 100% {
+          fill:#fff;
+          fill-opacity: 0.4;
+      }
+      50% {
+          fill:#fe9a22;
+          fill-opacity: 1;
+      }
+      }
+
+      @keyframes draw4 {
+          0%, 100% {
+              fill:#fff;
+              fill-opacity: 0.4;
+          }
+          50% {
+              fill:#2ec5ce;
+              fill-opacity: 1;
+          }
+      }
+  </style>
 </head>
 <body>
+<div class="wrapper" id="pre-render--html">
+  <div class="loader">
+    <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path id="path1"
+            d="M1.43457 70H25.1052C36.3294 70 45.4285 60.877 45.4285 49.6233H21.7578C10.5336 49.6233 1.43457 58.7463 1.43457 70Z"
+            fill="white" fill-opacity="0.4" />
+      <path id="path2"
+            d="M2.49341 20.3767V50.3425C13.7176 50.3425 22.8167 41.2195 22.8167 29.9658V0C11.5924 0 2.49341 9.12296 2.49341 20.3767Z"
+            fill="#fff" fill-opacity="0.4" />
+      <path id="path3"
+            d="M68.3819 0H44.7112C33.487 0 24.3879 9.12296 24.3879 20.3767H48.0586C59.2828 20.3767 68.3819 11.2537 68.3819 0Z"
+            fill="white" fill-opacity="0.4" />
+      <path id="path4"
+            d="M68.3819 48.4247V18.4589C57.1576 18.4589 48.0586 27.5819 48.0586 38.8356V68.8014C59.2828 68.8014 68.3819 59.6784 68.3819 48.4247Z"
+            fill="white" fill-opacity="0.4" />
+    </svg>
+    <p>FaceReader</p>
+  </div>
+</div>
+
 <div id="root"></div>
 </body>
 </html>

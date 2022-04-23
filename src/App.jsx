@@ -1,34 +1,25 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Layout } from 'antd';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import WebcamAnalyzer from './components/WebcamAnalyzer/WebcamAnalyzer';
-import LayoutHeader from './components/LayoutHeader/LayoutHeader';
-import PhotoAnalyzer from './components/PhotoAnalyzer/PhotoAnalyzer';
-import ModelStatusProvider from './contexts/modelStatus.context';
+import WebcamAnalyzer from 'components/WebcamAnalyzer/WebcamAnalyzer';
+import PhotoAnalyzer from 'components/PhotoAnalyzer/PhotoAnalyzer';
+import ModelStatusProvider from 'contexts/modelStatus.context';
 
-const { Content } = Layout;
+import removePreloadLogic from 'utils/removePreloadLogic';
+import ROUTES from 'config/routes';
+import MainPage from 'pages/MainPage/MainPage';
 
 const App = () => {
+  useEffect(() => removePreloadLogic(), []);
+
   return (
     <ModelStatusProvider>
       <Router>
-        <Layout>
-          <LayoutHeader />
-          <Content>
-            <Switch>
-              <Route path="/real-time-face-detector">
-                <WebcamAnalyzer />
-              </Route>
-              <Route path="/photo-face-detector">
-                <PhotoAnalyzer />
-              </Route>
-              <Route path="/" exact>
-                <h1>stub</h1>
-              </Route>
-            </Switch>
-          </Content>
-        </Layout>
+        <Routes>
+          <Route path={ROUTES.WEBCAM_ANALYZER} element={<WebcamAnalyzer />} />
+          <Route path={ROUTES.PHOTO_ANALYZER} element={<PhotoAnalyzer />} />
+          <Route path={ROUTES.HOME} exact element={<MainPage />} />
+        </Routes>
       </Router>
     </ModelStatusProvider>
   );

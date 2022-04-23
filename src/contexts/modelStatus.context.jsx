@@ -20,6 +20,10 @@ const ModelStatusProvider = ({ children }) => {
     }
   };
 
+  useEffect(async () => {
+    await requestModel();
+  }, []);
+
   const modelValue = useMemo(
     () => ({ model, requestModel, isModelLoaded }),
     [model, isModelLoaded],

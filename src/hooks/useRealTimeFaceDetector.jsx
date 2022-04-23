@@ -6,7 +6,7 @@ import { ModelContext } from '../contexts/modelStatus.context';
 const useRealTimeFaceDetector = (webcamRef) => {
   const returnTensors = false;
   let interval;
-  const { model, requestModel, isModelLoaded } = useContext(ModelContext);
+  const { model, isModelLoaded } = useContext(ModelContext);
 
   const [predictions, setPredictions] = useState(null);
 
@@ -21,13 +21,8 @@ const useRealTimeFaceDetector = (webcamRef) => {
     }
   };
 
-  useEffect(async () => {
+  useEffect(() => {
     if (isModelLoaded && !interval) {
-      interval = setInterval(() => {
-        debounce(detectFace(), 100);
-      }, 100);
-    } else {
-      await requestModel();
       interval = setInterval(() => {
         debounce(detectFace(), 100);
       }, 100);
