@@ -36,7 +36,7 @@
 .menu-item {
   position: relative;
   cursor: pointer;
-  flex-grow: 1;
+  flex: 1 1;
   margin: 0 16px;
   text-align: center;
 
@@ -67,7 +67,11 @@
     width: auto;
   }
 
-  .menu-item.active::after {
-    top: 46px;
+  .menu-item {
+    flex: 1 1 auto;
+
+    &.active::after {
+      top: 46px;
+    }
   }
 }

@@ -1,0 +1,68 @@
+.wrapper {
+  position: relative;
+  margin-top: 60px;
+  background-color: #F4F5F7;
+  padding: 40px 16px;
+}
+
+.author-wrapper {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 25px;
+}
+
+.icon {
+  margin-right: 14px;
+  object-fit: cover;
+  width: 56px;
+  height: 56px;
+}
+
+.author {
+  color: #18191F;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.position {
+  font-size: 14px;
+  line-height: 24px;
+  color: #474A57;
+}
+
+.quote {
+  color: #18191F;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.quote-icon {
+  top: 45px;
+  right: 24px;
+  position: absolute;
+}
+
+@media screen and (min-width: 1024px) {
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto auto;
+    justify-content: space-around;
+  }
+
+  .author-wrapper {
+    align-self: flex-end;
+  }
+
+    .quote {
+    max-width: 793px;
+    position: relative;
+  }
+
+  .quote-icon {
+    top: -10px;
+    left: -35px;
+    position: absolute;
+  }
+}

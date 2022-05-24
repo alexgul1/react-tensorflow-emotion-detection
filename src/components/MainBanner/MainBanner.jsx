@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Header from 'components/Header/Header';
 import Button from 'components/Button/Button';
+import ROUTES from 'config/routes';
 
 import creativeBanner from 'assets/creative.png';
 
@@ -15,13 +17,15 @@ const MainBanner = () => {
         <div className={styles.overview}>
           <div className={styles.title}>
             <span className={styles.colorful}>Real-Time</span>
-            <p>emotion detection</p>
+            <p>face detection</p>
           </div>
           <div className={styles.description}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc odio
-            in et, lectus sit lorem id integer.
+            The purpose of the work is to create a system that accepts visual
+            data of various formats and recognizes faces on them
           </div>
-          <Button className={styles.button} title="Get Started" />
+          <Link to={ROUTES.WEBCAM_ANALYZER}>
+            <Button className={styles.button} title="Get Started" />
+          </Link>
         </div>
       </div>
       <img className={styles.img} src={creativeBanner} alt="creative" />

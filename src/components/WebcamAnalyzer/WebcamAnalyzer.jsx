@@ -1,10 +1,10 @@
 /* eslint-disable no-unsafe-optional-chaining */
 import React, { useEffect, useRef, useState } from 'react';
 import Webcam from 'react-webcam';
+import Switch from 'react-switch';
 
-import useRealTimeFaceDetector from '../../hooks/useRealTimeFaceDetector';
-import BoundingBoxes from '../BoundingBoxes/BoundingBoxes';
-import MainLayout from '../../layouts/MainLayout/MainLayout';
+import useRealTimeFaceDetector from 'hooks/useRealTimeFaceDetector';
+import BoundingBoxes from 'components/BoundingBoxes/BoundingBoxes';
 
 import styles from './WebcamAnalyzer.scss';
 
@@ -23,18 +23,31 @@ const WebcamAnalyzer = () => {
     }
   }, [webcamRef?.current, containerRef?.current]);
 
-  const t =  () => {
+  const t = () => {
     setCameraActive((value) => !value);
   };
 
-
   return (
-    <MainLayout>
-      <div className={styles.container}>
-        <button onClick={t}>toggle</button>
+    <div className={styles.container}>
+      <div className={styles.title}>Webcam</div>
+      <div className={styles['toggle-container']}>
+        <span className={styles['toggle-title']}>Camera on/off</span>
+        <Switch
+          checked={isCameraActive}
+          onChange={t}
+          onColor="#8C30F5"
+          offColor="#9FA3AC"
+          handleDiameter={18}
+          height={22}
+          width={44}
+          uncheckedIcon={false}
+          checkedIcon={false}
+        />
+      </div>
 
-        <div className={styles['webcam-container']} ref={containerRef}>
-          {isCameraActive && (
+      <div className={styles['webcam-container']} ref={containerRef}>
+        {isCameraActive ? (
+          <>
             <Webcam
               audio={false}
               ref={webcamRef}
@@ -48,15 +61,22 @@ const WebcamAnalyzer = () => {
                   containerRef?.current?.clientHeight,
               }}
             />
-          )}
-          <BoundingBoxes
-            predictions={predictions}
-            width={webcamRef?.current?.video.videoWidth}
-            height={webcamRef?.current?.video.videoHeight}
-          />
-        </div>
+            <BoundingBoxes
+              predictions={predictions}
+              width={webcamRef?.current?.video.videoWidth}
+              height={webcamRef?.current?.video.videoHeight}
+            />
+          </>
+        ) : (
+          <div className={styles['webcam-plug']}>
+            <div className={styles.description}>
+              Please allow FaceReader to access your camera and
+              turn on toggle
+            </div>
+          </div>
+        )}
       </div>
-    </MainLayout>
+    </div>
   );
 };
 

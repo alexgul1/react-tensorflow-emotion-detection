@@ -1,9 +1,8 @@
 import React, { useCallback, useRef, useState } from 'react';
 
-import { getBase64, beforeUpload } from '../../utils/photoUpload';
-import useFaceDetector from '../../hooks/useFaceDetector';
-import BoundingBoxes from '../BoundingBoxes/BoundingBoxes';
-import MainLayout from '../../layouts/MainLayout/MainLayout';
+import { getBase64, beforeUpload } from 'utils/photoUpload';
+import useFaceDetector from 'hooks/useFaceDetector';
+import BoundingBoxes from 'components/BoundingBoxes/BoundingBoxes';
 
 import downloadIcon from 'assets/download.svg';
 
@@ -27,18 +26,16 @@ const PhotoAnalyzer = () => {
   }, []);
 
   return (
-    <MainLayout>
-      <div className={styles.wrapper}>
-        <div className={styles.title}>Upload a photo</div>
+    <div className={styles.wrapper}>
+      <div className={styles.title}>Upload a photo</div>
 
-        <div className={styles['file-wrapper']}>
-          <img src={downloadIcon} alt="icon" />
-          <div className={styles.description}>
-            <span>Click or drag file</span> to this area to upload
-          </div>
+      <div className={styles['file-wrapper']}>
+        <img src={downloadIcon} alt="icon" />
+        <div className={styles.description}>
+          <span>Click or drag file</span> to this area to upload
         </div>
       </div>
-    </MainLayout>
+    </div>
   );
 };
 

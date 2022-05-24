@@ -2,6 +2,17 @@ import React, { useEffect, useRef } from 'react';
 
 import styles from './BoundingBoxes.scss';
 
+const colorBased = {
+  30: '#ff0000',
+  60: '#ff5b00',
+  75: '#ffd000',
+  90: '#c6ee21',
+  100: '#74d13e',
+};
+
+const getProbabilityColor = (percent) =>
+  Object.entries(colorBased).find(([key]) => parseInt(key, 10) >= percent)[1];
+
 const BoundingBoxes = ({ predictions, width, height }) => {
   const canvasRef = useRef(null);
 
@@ -25,7 +36,7 @@ const BoundingBoxes = ({ predictions, width, height }) => {
         ctx.strokeStyle = '#FE9A22';
         ctx.setLineDash([10, 10]);
         ctx.font = '16px serif';
-        ctx.fillStyle = 'white';
+        ctx.fillStyle = getProbabilityColor(probabilityInPercent);
         ctx.fillText(
           `${probabilityInPercent}%`,
           firstEndPoint + 5,
