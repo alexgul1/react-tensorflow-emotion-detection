@@ -1,6 +1,6 @@
 import React from 'react';
 
-import userIcon from 'assets/user.png';
+import userIcon from 'assets/user.svg';
 import quoteIcon from 'assets/quote.svg';
 
 import styles from './Author.scss';
