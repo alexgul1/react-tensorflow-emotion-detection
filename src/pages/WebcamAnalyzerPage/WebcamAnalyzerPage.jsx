@@ -1,8 +1,8 @@
 import React from 'react';
-import { Helmet } from "react-helmet";
+import { Helmet } from 'react-helmet';
 
-import MainLayout from "layouts/MainLayout/MainLayout";
-import WebcamAnalyzer from "components/WebcamAnalyzer/WebcamAnalyzer";
+import MainLayout from 'layouts/MainLayout/MainLayout';
+import WebcamAnalyzer from 'components/WebcamAnalyzer/WebcamAnalyzer';
 
 const WebcamAnalyzerPage = () => (
   <MainLayout>
@@ -11,6 +11,6 @@ const WebcamAnalyzerPage = () => (
     </Helmet>
     <WebcamAnalyzer />
   </MainLayout>
-)
+);
 
 export default WebcamAnalyzerPage;

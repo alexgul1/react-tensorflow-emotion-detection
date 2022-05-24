@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 
-import debounce from '../utils/debounce';
-import { ModelContext } from '../contexts/modelStatus.context';
+import debounce from 'utils/debounce';
+import { ModelContext } from 'contexts/modelStatus.context';
 
 const useRealTimeFaceDetector = (webcamRef) => {
   const returnTensors = false;

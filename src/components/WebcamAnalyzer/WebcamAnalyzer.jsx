@@ -15,6 +15,10 @@ const WebcamAnalyzer = () => {
 
   const { predictions } = useRealTimeFaceDetector(webcamRef);
 
+  const toggleSwitch = () => {
+    setCameraActive((value) => !value);
+  };
+
   useEffect(() => {
     if (webcamRef?.current?.video) {
       // Set video height and width
@@ -23,10 +27,6 @@ const WebcamAnalyzer = () => {
     }
   }, [webcamRef?.current, containerRef?.current]);
 
-  const t = () => {
-    setCameraActive((value) => !value);
-  };
-
   return (
     <div className={styles.container}>
       <div className={styles.title}>Webcam</div>
@@ -34,7 +34,7 @@ const WebcamAnalyzer = () => {
         <span className={styles['toggle-title']}>Camera on/off</span>
         <Switch
           checked={isCameraActive}
-          onChange={t}
+          onChange={toggleSwitch}
           onColor="#8C30F5"
           offColor="#9FA3AC"
           handleDiameter={18}
@@ -70,8 +70,7 @@ const WebcamAnalyzer = () => {
         ) : (
           <div className={styles['webcam-plug']}>
             <div className={styles.description}>
-              Please allow FaceReader to access your camera and
-              turn on toggle
+              Please allow FaceReader to access your camera and turn on toggle
             </div>
           </div>
         )}

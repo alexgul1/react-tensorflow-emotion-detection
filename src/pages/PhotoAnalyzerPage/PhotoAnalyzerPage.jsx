@@ -1,16 +1,16 @@
 import React from 'react';
-import { Helmet } from "react-helmet";
+import { Helmet } from 'react-helmet';
 
-import MainLayout from "layouts/MainLayout/MainLayout";
-import PhotoAnalyzer from "components/PhotoAnalyzer/PhotoAnalyzer";
+import MainLayout from 'layouts/MainLayout/MainLayout';
+import PhotoUploader from 'components/PhotoUploader/PhotoUploader';
 
 const PhotoAnalyzerPage = () => (
   <MainLayout>
     <Helmet>
       <title>Upload a photo | FaceReader</title>
     </Helmet>
-    <PhotoAnalyzer />
+    <PhotoUploader />
   </MainLayout>
-)
+);
 
 export default PhotoAnalyzerPage;

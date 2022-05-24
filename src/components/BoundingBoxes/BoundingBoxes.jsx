@@ -36,12 +36,20 @@ const BoundingBoxes = ({ predictions, width, height }) => {
         ctx.strokeStyle = '#FE9A22';
         ctx.setLineDash([10, 10]);
         ctx.font = '16px serif';
+
+        const { width: textWidth } = ctx.measureText(
+          `${probabilityInPercent}%`,
+        );
+        ctx.fillStyle = 'white';
+        ctx.fillRect(firstEndPoint + 3, secondEndPoint, textWidth + 4, 16);
         ctx.fillStyle = getProbabilityColor(probabilityInPercent);
+
         ctx.fillText(
           `${probabilityInPercent}%`,
           firstEndPoint + 5,
           secondEndPoint + 14,
         );
+
         ctx.rect(firstStartPoint, secondStartPoint, ...size);
         ctx.stroke();
       });

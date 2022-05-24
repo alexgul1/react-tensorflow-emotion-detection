@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
-import { ModelContext } from '../contexts/modelStatus.context';
 
-const useFaceDetector = (photoRef, imageUrl) => {
+import { ModelContext } from 'contexts/modelStatus.context';
+
+const useFaceDetector = (photoRef) => {
   const returnTensors = false;
 
   const { model, isModelLoaded } = useContext(ModelContext);
@@ -21,9 +22,9 @@ const useFaceDetector = (photoRef, imageUrl) => {
 
   useEffect(() => {
     if (isModelLoaded) {
-      detectFace();
+      setTimeout(detectFace, 10);
     }
-  }, [imageUrl, isModelLoaded]);
+  }, [isModelLoaded, photoRef]);
 
   return {
     predictions,
